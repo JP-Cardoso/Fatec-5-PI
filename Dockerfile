@@ -4,10 +4,17 @@ WORKDIR /app
 
 COPY requirements.txt .
 
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
-COPY ml-pi-credit.py .
-RUN python ml-pi-credit.py
+COPY ml-pi-dsm5.py .
+
+COPY credit.csv .
+
+COPY mapper_data.py  .
+
+RUN python ml-pi-dsm5.py
 
 COPY api.py .
 
