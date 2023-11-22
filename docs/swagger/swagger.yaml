@@ -1,0 +1,94 @@
+swagger: '3.0.2'
+info:
+  title: API de Predição de Crédito
+  version: '1.0'
+paths:
+  /predict:
+    post:
+      summary: Endpoint para prever crédito
+      description: Envia um payload para prever crédito com base em vários parâmetros.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: payload
+          description: Dados para prever crédito
+          required: true
+          schema:
+            type: object
+            properties:
+              AccountBalance:
+                type: integer
+                example: 2
+              DurationofCredit:
+                type: integer
+                example: 10
+              PaymentStatusofPreviousCredit:
+                type: integer
+                example: 1
+              Purpose:
+                type: integer
+                example: 1
+              CreditAmount:
+                type: integer
+                example: 1
+              ValueSavings:
+                type: integer
+                example: 1
+              Lengthofcurrentemployment:
+                type: integer
+                example: 1
+              Instalmentpercent:
+                type: integer
+                example: 4
+              Sex&MaritalStatus:
+                type: integer
+                example: 2
+              Guarantors:
+                type: integer
+                example: 1
+              DurationinCurrentaddress:
+                type: integer
+                example: 4
+              Mostvaluableavailableasset:
+                type: integer
+                example: 2
+              Age:
+                type: integer
+                example: 1
+              ConcurrentCredits:
+                type: integer
+                example: 3
+              Typeofapartment:
+                type: integer
+                example: 1
+              NoofCreditsatthisBank:
+                type: integer
+                example: 1
+              Occupation:
+                type: integer
+                example: 3
+              Noofdependents:
+                type: integer
+                example: 1
+              Telephone:
+                type: integer
+                example: 1
+              ForeignWorker:
+                type: integer
+                example: 1
+      responses:
+        200:
+          description: Resposta da predição
+          schema:
+            type: object
+            properties:
+              prediction:
+                type: string
+                enum:
+                  - "Digno de Crédito"
+                  - "Não Digno de Crédito"
+        400:
+          description: Erro nos dados de entrada
