@@ -14,9 +14,10 @@ COPY credit.csv .
 
 COPY mapper_data.py  .
 
+COPY db.py .
+
 RUN python ml-pi-dsm5.py
 
 COPY api.py .
 
-# CMD ["python", "api.py"]
 CMD ["gunicorn", "api:app", "--bind", "0.0.0.0:5000"]

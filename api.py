@@ -2,9 +2,10 @@ from flask import Flask, request, jsonify, make_response
 import joblib
 import pandas as pd
 import mapper_data
+import db
 
 app = Flask(__name__)
-knn = joblib.load("lda_model.pkl")
+lda = joblib.load("lda_model.pkl")
 label_encoders = joblib.load("label_encoders.pkl")
 
 
@@ -22,19 +23,16 @@ def predict():
     else:
         sample = pd.DataFrame(sample)
 
-    prediction = knn.predict(sample)
+    prediction = lda.predict(sample)
     result = label_encoders["class"].inverse_transform(prediction)
-    print('result',result)
     if result[0] == "1":
         resposta = "Digno de Crédito"
     elif result[0] == "0":
         resposta = "Não é digno de Crédito"
-    return make_response(jsonify(
-        resultado = resposta,
-        atrubutos = data
-    ))
-    # return jsonify({"Dados", {}})
+    dadoCombinado = {"resposta": resposta, "dados": data}
+    db.SaveData(dadoCombinado)
+    return make_response(jsonify(resultado=resposta, atrubutos=data))
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
