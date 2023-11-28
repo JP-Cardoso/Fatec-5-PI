@@ -25,3 +25,6 @@ O projeto foi concebido com a ideia de se tornar um produto ou um auxílio para 
 - [Marcelo Reis](https://github.com/marcelo-ls-reis)
 - [João Paulo](https://github.com/JP-Cardoso)
 - [Elivelto](https://github.com/elivelto7)
+
+### Youtube:
+- [Vídeo](https://www.youtube.com/watch?v=6nmVWZNQoEs&t=2s)
